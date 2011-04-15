@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @eatery.name %><br/>
+	<h2>plot</h2>
+	<%= @eatery.permalink %>
+</p>
+
+<%= button_to "Destroy", eatery_path(@eatery), :confirm => "Are you sure?", :method => :delete %>
+<%= link_to 'Edit', edit_eatery_path(@eatery) %> |
+<%= link_to 'Back to Eateries List', eateries_path %>

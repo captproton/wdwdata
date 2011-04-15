@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<% @eateries.each do |eatery| %>
+
+<p>
+  <b>Name:</b>
+  <%= link_to eatery.name, eatery_path(eatery) %><br/>
+	<h2>Permalink</h2>
+	<%= eatery.permalink %>  
+</p>
+
+<% end -%>
+<%# link_to 'Add Eatery', '/eateries' %>
+<%= link_to "Add Eatery", new_eatery_path %>

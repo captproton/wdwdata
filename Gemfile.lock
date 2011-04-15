@@ -53,6 +53,7 @@ GEM
       nokogiri (>= 1.4.4)
       rack-test (>= 0.5.7)
     culerity (0.2.15)
+    database_cleaner (0.6.5)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -72,6 +73,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    nifty-generators (0.4.6)
     nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.2)
@@ -127,7 +129,9 @@ PLATFORMS
 DEPENDENCIES
   capybara
   cucumber-rails
+  database_cleaner
   jquery-rails
+  nifty-generators
   rails (= 3.0.5)
   rspec-rails (>= 2.0.1)
   sqlite3
