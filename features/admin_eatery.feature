@@ -13,7 +13,7 @@ Feature: Administer eateries
     Then I should be on the eatery show page for "caseys-corner"
     And I should see "Eatery saved successfully!"
     And I should see "caseys-corner"
-    And I should see "caseys-corner"
+    And I should see "Casey's Corner"
     And I should see "Back to Eateries List"
     And I should see "caseys-corner" on the eateries list
 
