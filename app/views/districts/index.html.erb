@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<% @districts.each do |district| %>
+
+<p>
+  <h2>
+  <%= link_to district.name, district_path(district) %>
+	</h2>
+	<h2>Permalink</h2>
+	<%= district.permalink %>  
+</p>
+
+<% end -%>
+<%= link_to "Add District", new_district_path %>

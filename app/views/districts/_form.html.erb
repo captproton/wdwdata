@@ -1,0 +1,14 @@
+<%= form_for(@district) do |f| %>
+
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :permalink %><br />
+  <%= f.text_field :permalink %>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

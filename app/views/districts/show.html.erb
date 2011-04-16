@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<h2>
+  <%= @district.name %>
+	</h2>
+	<h3>permalink</h3>
+	<%= @district.permalink %>
+</p>
+
+<%= button_to "Destroy", district_path(@district), :confirm => "Are you sure?", :method => :delete %>
+<%= link_to 'Edit', edit_district_path(@district) %> |
+<%= link_to 'Back to Districts List', districts_path %>

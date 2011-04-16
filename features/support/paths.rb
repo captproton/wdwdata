@@ -17,6 +17,12 @@ module NavigationHelpers
     when /the eatery show page for "(.+)"/
       eatery_path(Eatery.find_by_permalink($1))
     
+    when /the districts list/
+      districts_path
+      
+    when /the district show page for "(.+)"/
+      district_path(District.find_by_permalink($1))
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
