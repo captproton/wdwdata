@@ -54,5 +54,4 @@ class DistrictsController < ApplicationController
     redirect_to districts_url, :notice => "District has been successfully destroyed!"
   end
   
-
 end
