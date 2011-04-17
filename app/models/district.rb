@@ -34,5 +34,6 @@ class District < ActiveRecord::Base
   validates_presence_of :permalink
   validates_presence_of :name
   validates_uniqueness_of :permalink
+  has_many :eateries
   
 end

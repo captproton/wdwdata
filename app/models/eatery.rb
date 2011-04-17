@@ -27,21 +27,16 @@ class Eatery < ActiveRecord::Base
   
   def self.find_by_permalink_and_update(park_permalink, permalink) 
     # determine if the eatery was already created, and create one if it didn't
-    @eatery = Eatery.find_by_permalink(permalink)
-    @eatery ||= Eatery.new
-    
-    @eatery.save!
-    # Determine if eatery has lastest data
-    @there  = Eatery.find_by_district_and_permalink(park_permalink, permalink)
-    unless 	@eatery.updated_at ==  @there['updated_at'] # if the eatery doesn't have the latest update
-      @eatery.update_attributes @there # add a new one from the json
-      # If eatery doesn't have the latest data, update it
-      # @eatery.save!
-    end
+    @there  = Eatery.find_by_district_and_permalink(park_permalink, permalink) # grab eatery details
+    @eatery = Eatery.find_by_permalink(permalink) # grab parent id
+    @eatery ||= Eatery.new(@there) # get existing eatery or create new eatery if it doesn't already exist
+    @eatery.district = District.find_by_permalink(park_permalink) # set parent distirct
+    @eatery.save! #save record
     
   end
   
   validates_presence_of :permalink
   validates_presence_of :name
   validates_uniqueness_of :permalink
+  belongs_to :district
 end
