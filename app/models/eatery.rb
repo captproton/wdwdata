@@ -1,6 +1,9 @@
+# encoding: utf-8
+
 class Eatery < ActiveRecord::Base
+  require 'iconv'
   include HTTParty
-  # base_uri 'whoismyrepresentative.com'
+
   base_uri 'touringplans.com'
   default_params :output => 'json'
   format :json
@@ -31,8 +34,9 @@ class Eatery < ActiveRecord::Base
     @eatery = Eatery.find_by_permalink(permalink) # grab parent id
     @eatery ||= Eatery.new(@there) # get existing eatery or create new eatery if it doesn't already exist
     @eatery.district = District.find_by_permalink(park_permalink) # set parent distirct
-    @eatery.save! #save record
-    
+    @eatery.save! 
+    rescue ActiveRecord::RecordNotSaved
+      puts 'Unable to create eatery'    
   end
   
   validates_presence_of :permalink
