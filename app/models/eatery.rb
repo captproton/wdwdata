@@ -28,12 +28,13 @@ class Eatery < ActiveRecord::Base
     # @table_service = @park_list.last # return existing or new park list of table service from json 
   end
   
-  def self.find_by_permalink_and_update(park_permalink, permalink) 
+  def self.find_by_permalink_and_update(park_permalink, permalink, info_credit) 
     # determine if the eatery was already created, and create one if it didn't
     @there  = Eatery.find_by_district_and_permalink(park_permalink, permalink) # grab eatery details
     @eatery = Eatery.find_by_permalink(permalink) # grab parent id
     @eatery ||= Eatery.new(@there) # get existing eatery or create new eatery if it doesn't already exist
-    @eatery.district = District.find_by_permalink(park_permalink) # set parent distirct
+    @eatery.district = District.find_by_permalink(park_permalink) # set parent district
+    @eatery.credit = info_credit
     @eatery.save! 
     rescue ActiveRecord::RecordNotSaved
       puts 'Unable to create eatery'    

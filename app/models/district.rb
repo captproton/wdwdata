@@ -38,7 +38,7 @@ class District < ActiveRecord::Base
   end
   
   # http://touringplans.com/walt-disney-world/resort-dining.json
-  def self.find_district_list_by_destination_permalink_and_update_districts(destination_permalink) 
+  def self.find_district_list_by_destination_permalink_and_update_districts(destination_permalink, info_credit) 
     # determine if the eatery was already created, and create one if it didn't
     @list  = District.find_list_of_resort_districts_by_destination_permalink(destination_permalink) # grab list of resort districts details
     @list.each do |resort|
@@ -46,6 +46,7 @@ class District < ActiveRecord::Base
       @district ||= District.new # if resort doesn't exist, create it with details from json resort feed
       @district.permalink = resort['permalink']
       @district.name = resort['name']
+      @district.credit = info_credit
       # @district.destination = District.find_by_permalink(destination_permalink) # set parent destination
       if @district.save! 
         puts "Saved " + @district.name
@@ -58,7 +59,7 @@ class District < ActiveRecord::Base
           puts  eatery['permalink']
           puts "destination_permalink is " + destination_permalink
           eatery_permalink = eatery['permalink']
-          @eatery = Eatery.find_by_permalink_and_update(destination_permalink, eatery_permalink)
+          @eatery = Eatery.find_by_permalink_and_update(destination_permalink, eatery_permalink, info_credit)
           
         end
       end

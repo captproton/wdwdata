@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110417145209) do
+ActiveRecord::Schema.define(:version => 20110421195300) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110417145209) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_park"
+    t.string   "credit"
   end
 
   create_table "eateries", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110417145209) do
     t.string   "friendliness_rating"
     t.string   "portion_size"
     t.integer  "district_id"
+    t.string   "credit"
   end
 
 end
