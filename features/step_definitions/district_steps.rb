@@ -2,7 +2,7 @@ Given /^an district with the permalink "([^"]*)"$/ do |permalink|
   District.create!(:permalink => permalink)
 end
 
-Given /^an district with the permalink "([^"]*)" and the name "([^"]*)"$/ do |permalink, name|
+Given /^a district with the permalink "([^"]*)" and the name "([^"]*)"$/ do |permalink, name|
   District.create!(:permalink => permalink, :name => name)
 end
 
@@ -20,6 +20,6 @@ Then /^I should not see "([^"]*)" on the districts list$/ do |permalink|
   page.should_not have_content permalink
 end
 
-Given /^an district with the name "([^"]*)"$/ do |arg1|
+Given /^a district with the name "([^"]*)"$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end

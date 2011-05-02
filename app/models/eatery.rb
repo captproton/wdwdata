@@ -44,4 +44,5 @@ class Eatery < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :permalink
   belongs_to :district
+  has_many :menus
 end

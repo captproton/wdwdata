@@ -6,7 +6,13 @@
 	<h2>plot</h2>
 	<%= @eatery.permalink %>
 </p>
+<p>
+</p>
 
 <%= button_to "Destroy", eatery_path(@eatery), :confirm => "Are you sure?", :method => :delete %>
-<%= link_to 'Edit', edit_eatery_path(@eatery) %> |
-<%= link_to 'Back to Eateries List', eateries_path %>
+<p>
+	<%= link_to 'Edit', edit_eatery_path(@eatery) %> |
+	<%= link_to 'Menus', eatery_menus_path(@eatery) %> |
+
+	<%= link_to 'Back to Eateries List', eateries_path %>
+</p>

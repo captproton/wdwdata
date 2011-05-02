@@ -36,3 +36,4 @@ gem "jquery-rails"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem "nifty-generators", :group => :development
 gem "httparty"
+gem "pickle"

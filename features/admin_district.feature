@@ -3,7 +3,7 @@ Feature: Administer districts
   As an admin
   I want to add, delete and edit districts
 
-  Scenario: Adding an district
+  Scenario: Adding a district
     Given there is no district with the permalink "magic-kingdom"
     And I am on the districts list
     When I follow "Add District"
@@ -17,8 +17,8 @@ Feature: Administer districts
     And I should see "Back to Districts List"
     And I should see "magic-kingdom" on the districts list
 
-  Scenario: Adding an district with a duplicate permalink
-    Given an district with the permalink "magic-kingdom" and the name "Magic Kingdom"
+  Scenario: Adding a district with a duplicate permalink
+    Given a district with the permalink "magic-kingdom" and the name "Magic Kingdom"
     And I am on the districts list
     When I follow "Add District"
     And I fill in "Permalink" with "magic-kingdom"
@@ -26,20 +26,20 @@ Feature: Administer districts
     And I press "Create District"
     And I should not see "District saved successfully!"
 
-  Scenario: Adding an district without a permalink
+  Scenario: Adding a district without a permalink
     Given I am on the districts list
     When I follow "Add District"
     And I press "Create District"
     Then I should not see "District saved successfully!"
 
-  Scenario: Adding an district without a name
+  Scenario: Adding a district without a name
     Given I am on the districts list
     When I follow "Add District"
     And I press "Create District"
     Then I should not see "District saved successfully!"
 
-  Scenario: Deleting an district
-  	Given an district with the permalink "magic-kingdom" and the name "Magic Kingdom"
+  Scenario: Deleting a district
+  	Given a district with the permalink "magic-kingdom" and the name "Magic Kingdom"
     And I am on the districts list
     When I follow "Magic Kingdom"
     And I press "Destroy"
@@ -47,8 +47,8 @@ Feature: Administer districts
     And I should see "District has been successfully destroyed!"
     And I should not see "Magic Kingdom"
 
-  Scenario: Editing the content of an district
-  	Given an district with the permalink "magic-kingdom" and the name "Magic Kingdom"
+  Scenario: Editing the content of a district
+  	Given a district with the permalink "magic-kingdom" and the name "Magic Kingdom"
     And I am on the districts list
     When I follow "Magic Kingdom"
     And I follow "Edit"

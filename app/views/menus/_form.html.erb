@@ -1,0 +1,11 @@
+<%= form_for [@eatery, @menu] do |f| %>
+
+	<div class="field">
+	  <%= f.label :name %><br />
+	  <%= f.text_field :name %>
+	</div>
+
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
+<% end %>

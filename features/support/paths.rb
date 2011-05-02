@@ -11,6 +11,19 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the foods list/
+      foods_path
+      
+    when /the food show page for "(.+)"/
+      food_path(Food.find_by_name($1))
+    
+    when /the menus list/
+      menus_path
+      
+    when /the menu show page for "(.+)"/
+      menu_path(Menu.find_by_name($1))
+    
+
     when /the eateries list/
       eateries_path
       

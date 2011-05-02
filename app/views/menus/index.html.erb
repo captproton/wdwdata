@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @eatery.name %> Menus</h2>
+<% @menus.each do |menu| %>
+
+<p>
+  <h2>
+  <%= link_to menu.name, eatery_menu_path(menu.eatery,menu) %>
+	</h2>
+	<h2>Name</h2>
+	<%= menu.name %>  
+</p>
+
+<% end -%>
+<%= link_to "Add Menu", new_eatery_menu_path %>

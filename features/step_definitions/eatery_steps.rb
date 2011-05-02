@@ -2,9 +2,13 @@ Given /^an eatery with the permalink "([^"]*)"$/ do |permalink|
   Eatery.create!(:permalink => permalink)
 end
 
-Given /^an eatery with the permalink "([^"]*)" and the name "([^"]*)"$/ do |permalink, name|
+Given /^an eatery with the permalink "([^"]*)" dobe dobe do$/ do |permalink, name|
   Eatery.create!(:permalink => permalink, :name => name)
 end
+
+# Given /^an eatery with the permalink "([^"]*)" and the name "([^"]*)"$/ do |permalink, name|
+#   Eatery.create!(:permalink => permalink, :name => name)
+# end
 
 Given /^there is no eatery with the permalink "([^"]*)"$/ do |eatery|
   Eatery.find_by_permalink(eatery).should_not == true

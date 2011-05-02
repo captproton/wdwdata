@@ -1,4 +1,6 @@
-Wdwdata::Application.routes.draw do
+Wdwdata::Application.routes.draw do  
+
+  resources :foods
 
   resources :districts
 
@@ -15,7 +17,9 @@ Wdwdata::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-    resources :eateries
+    resources :eateries do
+      resources :menus
+    end
 
   # Sample resource route with options:
   #   resources :products do

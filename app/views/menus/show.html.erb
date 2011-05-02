@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<h2>
+  		<%= @menu.name %>
+	</h2>
+</p>
+
+<%= button_to "Destroy", eatery_menu_path(@menu.eatery,@menu), :confirm => "Are you sure?", :method => :delete %>
+<%= link_to 'Edit', edit_eatery_menu_path(@menu.eatery,@menu) %> |
+<%= link_to 'Back to Menus List', eatery_menus_path %>

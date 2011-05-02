@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @food.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @food.description %>
+</p>
+
+<p>
+  <b>Menu item:</b>
+  <%= @food.menu_item_id %>
+</p>
+
+<p>
+  <b>Default price:</b>
+  <%= @food.default_price %>
+</p>
+
+<%= button_to "Destroy", food_path(@food), :confirm => "Are you sure?", :method => :delete %> | 
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back to Foods List', foods_path %>
