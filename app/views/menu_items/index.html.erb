@@ -1,4 +1,4 @@
-<h1>Listing menu_items</h1>
+<h1>Listing menu_items for <%= @menu.name %></h1>
 
 <table>
   <tr>
@@ -12,16 +12,16 @@
 
 <% @menu_items.each do |menu_item| %>
   <tr>
-    <td><%= menu_item.menu_id %></td>
-    <td><%= menu_item.food_id %></td>
-    <td><%= menu_item.price %></td>
-    <td><%= link_to 'Show', menu_item %></td>
-    <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>
-    <td><%= link_to 'Destroy', menu_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= menu_item.menu.name %></td>
+    <td><%= menu_item.food.name %></td>
+    <td><%= number_to_currency(menu_item.price) %></td>
+    <td><%# link_to 'Show', menu_menu_item_path %>
+  <%= link_to "Edit", edit_menu_menu_item_path(menu_item.menu,menu_item) %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Menu item', new_menu_item_path %>
+<%= link_to 'New Menu item', new_menu_menu_item_path %>

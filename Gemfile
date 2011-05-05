@@ -37,3 +37,4 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem "nifty-generators", :group => :development
 gem "httparty", ">= 0.7.6"
 gem "pickle"
+gem "heroku"

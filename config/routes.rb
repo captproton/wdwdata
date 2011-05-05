@@ -31,6 +31,10 @@ Wdwdata::Application.routes.draw do
     resources :eateries do
       resources :menus
     end
+    
+    resources :menus do
+      resources :menu_items
+    end
 
   # Sample resource route with options:
   #   resources :products do

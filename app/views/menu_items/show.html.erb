@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Menu:</b>
-  <%= @menu_item.menu_id %>
+  <b>Menu:  <%= @menu.name %></b>
 </p>
 
 <p>
   <b>Food:</b>
-  <%= @menu_item.food_id %>
+  <%= @menu_item.food.name %>
 </p>
 
 <p>
   <b>Price:</b>
-  <%= @menu_item.price %>
+  <%= number_to_currency(@menu_item.price) %>
 </p>
 
 
-<%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
-<%= link_to 'Back', menu_items_path %>
+<%= link_to "Edit", edit_menu_menu_item_path(@menu_item.menu,@menu_item) %></td>
+ |
+<%= link_to 'Back', menu_menu_items_path %>

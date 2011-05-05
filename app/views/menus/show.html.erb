@@ -4,6 +4,7 @@
 	<h2>
   		<%= @menu.name %>
 	</h2>
+	<%= link_to "menu items", menu_menu_items_path(@menu) %>
 </p>
 
 <%= button_to "Destroy", eatery_menu_path(@menu.eatery,@menu), :confirm => "Are you sure?", :method => :delete %>

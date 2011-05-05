@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
+  before_filter(:get_eatery)
+  
   def index
-    @eatery = Eatery.find(params[:eatery_id])
     @menus = @eatery.menus
   end
 
@@ -9,21 +10,18 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @eatery = Eatery.find(params[:eatery_id])
     @menu = Menu.find(params[:id])
   end
 
   def new
     # @article = Article.find(params[:article_id])
     # @comment = @article.comments.build
-    @eatery = Eatery.find(params[:eatery_id])
     @menu = @eatery.menus.build
   end
   
   def create
     # @article = Article.find(params[:article_id])
     # @comment = @article.comments.build(params[:comment])
-    @eatery = Eatery.find(params[:eatery_id])
     @menu = @eatery.menus.build(params[:menu])
 
     respond_to do |format|
@@ -52,6 +50,11 @@ class MenusController < ApplicationController
       render :action => "edit"
     end
   end
+
+  private
   
+  def get_eatery
+    @eatery = Eatery.find(params[:eatery_id])
+  end  
 
 end
