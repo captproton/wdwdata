@@ -1,8 +1,19 @@
 Wdwdata::Application.routes.draw do  
 
+  resources :import_tables
+
+  get "csv/import"
+
+  resources :menu_items
+
   resources :foods
 
   resources :districts
+
+  post "csv/import" => 'csv#upload'
+  
+  match 'import_tables/:id' => 'import_tables#merge'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,27 @@
+<h1>Listing menu_items</h1>
+
+<table>
+  <tr>
+    <th>Menu</th>
+    <th>Food</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @menu_items.each do |menu_item| %>
+  <tr>
+    <td><%= menu_item.menu_id %></td>
+    <td><%= menu_item.food_id %></td>
+    <td><%= menu_item.price %></td>
+    <td><%= link_to 'Show', menu_item %></td>
+    <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>
+    <td><%= link_to 'Destroy', menu_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Menu item', new_menu_item_path %>
