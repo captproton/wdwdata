@@ -15,6 +15,6 @@
 </p>
 
 
-<%= link_to "Edit", edit_menu_menu_item_path(@menu_item.menu,@menu_item) %></td>
- |
-<%= link_to 'Back', menu_menu_items_path %>
+<%= button_to "Destroy", menu_menu_item_path(@menu_item.menu,@menu_item), :confirm => "Are you sure?", :method => :delete %>
+<%= link_to 'Edit', edit_menu_menu_item_path(@menu_item.menu,@menu_item) %> |
+<%= link_to 'Back to Items List', menu_menu_items_path %>

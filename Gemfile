@@ -38,3 +38,4 @@ gem "nifty-generators", :group => :development
 gem "httparty", ">= 0.7.6"
 gem "pickle"
 gem "heroku"
+gem "high_voltage"
