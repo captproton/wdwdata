@@ -14,7 +14,7 @@ class Eatery < ActiveRecord::Base
   # http://touringplans.com/walt-disney-world/dining/big-river-grille-brewing-works.json
 
   # Eatery.find_by_district_and_permalink('magic-kingdom', 'columbia-harbor-house')
-  def self.find_by_district_and_permalink(district_permalink, permalink)
+  def self.find_remote_by_district_and_permalink(district_permalink, permalink)
     get('/' + district_permalink + '/dining/' + permalink + '.json').parsed_response
   end
   
@@ -29,9 +29,15 @@ class Eatery < ActiveRecord::Base
   end
   
   def self.find_by_permalink_and_update(park_permalink, permalink, info_credit) 
+    puts 'start find_by_permalink_and_update'
+    puts 'park_permalink ' + park_permalink 
+    puts 'permalink ' + permalink
+    puts 'info_credit ' + info_credit
+    puts '---'
     # determine if the eatery was already created, and create one if it didn't
-    @there  = Eatery.find_by_district_and_permalink(park_permalink, permalink) # grab eatery details
-    @eatery = Eatery.find_by_permalink(permalink) # grab parent id
+    @there  = Eatery.find_remote_by_district_and_permalink(park_permalink, permalink) # grab remote eatery details
+    @eatery = Eatery.find_by_permalink(permalink) # grab eatery if is exists.  If not found, the next line
+              # evaluates.
     @eatery ||= Eatery.new(@there) # get existing eatery or create new eatery if it doesn't already exist
     @eatery.district = District.find_by_permalink(park_permalink) # set parent district
     @eatery.credit = info_credit
