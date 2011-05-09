@@ -5,12 +5,12 @@ namespace :app do
     district_permalink = ENV["DISTRICT_PERMALINK"] || 'epcot'
     info_credit = ENV["INFO_CREDIT"] || 'touringplans.com'
     if district_permalink == 'walt-disney-world' ## means the update is for resort dining, not in the parks
-      puts 'that is not ready yet'
+      puts 'Currently, I can only update eateries in the parks.'
     else
       
       puts "Starting pull for #{district_permalink}"
       @counter_service  = District.find_park_eateries_list_by_permalink_hash(district_permalink).first
-      @table_service  = District.find_park_eateries_list_by_permalink_hash(district_permalink).last
+      @table_service    = District.find_park_eateries_list_by_permalink_hash(district_permalink).last
       puts "Starting Counter Service for #{district_permalink}"
       @counter_service.each do |eatery|
         puts eatery['permalink']

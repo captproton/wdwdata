@@ -1,0 +1,6 @@
+<div class="food_details">
+  <h2><%= food.name %></h2>
+
+  <%= hidden_field_tag "menu[food_ids][#{food.id}]", food.id %>
+  <%= content_tag(:p, link_to("Remove food", "#", :class => "remove_food")) %>
+</div>
