@@ -18,8 +18,8 @@ class District < ActiveRecord::Base
   end
 
   # http://touringplans.com/magic-kingdom/dining.json
-  def self.find_resort_eateries_list_by_permalink(resort_permalink)
-    get('/' + resort_permalink + '/resort-dining.json').parsed_response
+  def self.find_resort_eateries_list_by_permalink
+    get('/walt-disney-world/resort-dining.json').parsed_response
   end
 
   def self.find_park_eateries_list_by_permalink_hash(district_permalink)
