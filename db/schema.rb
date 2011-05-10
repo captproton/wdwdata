@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110506023857) do
+ActiveRecord::Schema.define(:version => 20110510000202) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20110506023857) do
     t.string   "thumbs_up"
     t.string   "table_quality_rating"
     t.string   "service_rating"
-    t.string   "house_specialties"
+    t.text     "house_specialties",        :limit => 255
     t.string   "extinct_on"
     t.string   "entree_range"
     t.string   "cost_code"
