@@ -1,12 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-	<h2>
-  		<%= @menu.name %>
-	</h2>
-	<%= link_to "menu items", menu_menu_items_path(@menu) %>
-</p>
-
-<%= button_to "Destroy", eatery_menu_path(@menu.eatery,@menu), :confirm => "Are you sure?", :method => :delete %>
-<%= link_to 'Edit', edit_eatery_menu_path(@menu.eatery,@menu) %> |
-<%= link_to 'Back to Menus List', eatery_menus_path %>
+<div class="yom-mod story-list story-list-lp" id="MediaStoryListLP">
+    <div class="hd"><h3><%= @menu.name %></h3></div>
+	<div class="bd">
+          <ul class="yom-list yom-list-wide headline">
+				<% if !@menu.menu_items.blank? %>
+				  <% for menu_item in @menu.menu_items %>
+				    <li class="first">
+						<div class="story">
+							<div class="txt">
+								<h4> <%= link_to menu_item.food.name, food_path(menu_item.food) %></h4>
+								<cite><%= menu_item.price %></cite>
+							</div>
+						</div>
+					</li>
+				  <% end %>
+				<% else %>
+				  	No items yet
+				<% end %>
+				
+          </ul>
+     </div>
+     <div class="ft">
+		<%= button_to "Destroy", eatery_menu_path(@menu.eatery,@menu), :confirm => "Are you sure?", :method => :delete %>
+	
+          <div class="more">    
+			<%= link_to "menu items", menu_menu_items_path(@menu) %> |
+			<%= link_to 'Edit', edit_eatery_menu_path(@menu.eatery,@menu) %> |
+			<%= link_to 'Back to Menus List', eatery_menus_path %>
+	      </div>
+     </div>
+</div>
