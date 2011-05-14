@@ -1,0 +1,38 @@
+<!-- hello moto head -->
+<%
+  if (yielded_head = yield(:head)).present?
+    logger.warn "\n-- DEPRECATION WARNING --"
+    logger.warn "The use of 'content_for :head' is DEPRECATED for the frontend layouts."
+    logger.warn "For stylesheets, use content_for :stylesheets"
+    logger.warn "For javascripts, use content_for :javascripts"
+    logger.warn "For meta tags, use content_for :meta"
+    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
+    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+  end
+  if (yielded_head_libraries = yield(:head_libraries)).present?
+    logger.warn "\n-- DEPRECATION WARNING --"
+    logger.warn "The use of 'content_for :head_libraries' is DEPRECATED for the frontend layouts."
+    logger.warn "Please use content_for :before_javascript_libraries or content_for :after_javascript_libraries instead."
+    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
+    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+  end
+%>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  <%= csrf_meta_tag %>
+  <%= yield :meta %>
+
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/zz/combo?d/lib/yui/2.8.0r4/build/reset/reset-min.css&d/lib/yui/2.8.0r4/build/fonts/fonts-min.css&os/mit/media/p/common/grids-min-84124.css&os/mit/media/p/common/presentation-min-25135.css&os/mit/media/m/base/modules-min-106186.css&kx/ucs/uh/css/200/yunivhead-min.css&kx/ucs/uh/css/194/logo-min.css&kx/ucs/search/css/163/search_all-min.css&kx/ucs/search/css/170/search_buttons-min.css&os/mit/media/m/header/header-min-49043.css&os/mit/media/m/navigation/navigation-min-78540.css&os/mit/media/m/ads/ads-min-109990.css&os/mit/media/m/linkbox/linkbox-min-105638.css&os/mit/media/m/footer/footer-links-min-84768.css&os/mit/media/m/trending/trending-min-103801.css&os/mit/media/m/footer/footer-info-min-65168.css" />
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/zz/combo?os/mit/media/themes/base/base-min-108859.css&os/mit/media/themes/base/base-imagery-min-107649.css&os/mit/media/themes/black0d0d0d/theme-min-108307.css&os/mit/media/themes/black0d0d0d/theme-imagery-min-100135.css&os/mit/media/p/autos/site/autos-min-111755.css" />
+
+
+  <%= yield :stylesheets %>
+  <%# render :partial => '/shared/google_analytics' unless local_request? %>
+
+
+  <% #TODO: REMOVE yielded_head and yielded_head_libraries and deprecation notice 0.9.9 <=> 1.0 %>
+  <%= yielded_head_libraries %>
+  <%= yielded_head %>
+</head>

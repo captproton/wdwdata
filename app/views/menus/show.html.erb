@@ -9,7 +9,7 @@
 				    <li class="first">
 						<div class="story">
 							<div class="txt">
-								<h4> <%= link_to menu_item.food.name, food_path(menu_item.food) %></h4>
+								<h4> <%= link_to menu_item.food.name, edit_menu_menu_item_path(@menu,menu_item) %></h4>
 								<cite><%= menu_item.price %></cite>
 							</div>
 						</div>

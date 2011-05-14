@@ -2,11 +2,13 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.xml
   def index
-    @foods = Food.all
-
+    @foods = Food.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    # @categories = Category.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @foods }
+      format.json  { render :json => @foods.as_json(:only => [:name]) }
     end
   end
 

@@ -13,7 +13,7 @@
 <% @menu_items.each do |menu_item| %>
   <tr>
     <td><%= menu_item.menu.name %></td>
-    <td><%= menu_item.food.name %></td>
+    <td><%= menu_item.food_name %></td>
     <td><%= number_to_currency(menu_item.price) %></td>
     <td><%# link_to 'Show', menu_menu_item_path %>
   <%= link_to "Edit", edit_menu_menu_item_path(menu_item.menu,menu_item) %></td>

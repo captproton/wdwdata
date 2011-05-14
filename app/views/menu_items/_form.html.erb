@@ -1,3 +1,21 @@
+<style type="text/css">
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+</style>
+
+<link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css" />
+<script type="text/javascript" src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
+
+<!--there is no custom header content for this example-->
+
+
 <%= form_for [@menu, @menu_item] do |f| %>
   <% if @menu_item.errors.any? %>
     <div id="error_explanation">
@@ -11,10 +29,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :food_id %><br />
-    <%= f.text_field :food_id %>
-  </div>
+<!--BEGIN SOURCE CODE FOR EXAMPLE =============================== -->
+
+<div id="demo">
+  <label for="ac-input">Music artist:</label><br>
+  <input id="ac-input" type="text">
+</div>
+
+<script>
+YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasource-get", function (Y) {
+  // Create a DataSource instance.
+  var ds = new Y.DataSource.Get({
+    source: 'http://localhost:3000/foods.json'
+  });
+
+  Y.one('#ac-input').plug(Y.Plugin.AutoComplete, {
+    maxResults: 10,
+    resultHighlighter: 'wordMatch',
+    resultTextLocator: 'name',
+
+    // Use the DataSource instance as the result source.
+    source: ds,
+
+    // YQL query to use for each request (URL-encoded, except for the
+    // {query} placeholder). This will be appended to the URL that was supplied
+    // to the DataSource's "source" config above.
+    requestTemplate: '?search={query}%22',
+
+    // Custom result list locator to parse the results out of the YQL response.
+    // This is necessary because YQL sometimes returns an array of results, and
+    // sometimes just a single result that isn't in an array.
+    resultListLocator: function (response) {
+      var results = response[0].foods.food &&
+            response[0].foods.food.name;
+
+      if (results && !Y.Lang.isArray(results)) {
+        results = [results];
+      }
+
+      return results || [];
+    }
+  });
+});
+</script>
+
+<!--END SOURCE CODE FOR EXAMPLE =============================== -->
+
+<div class="field">
+  <%= f.label :food_name %><br />
+  <%= f.text_field :food_name %>
+</div>
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
