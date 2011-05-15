@@ -29,10 +29,10 @@ body {
     </div>
   <% end %>
 
-<!--BEGIN SOURCE CODE FOR EXAMPLE =============================== -->
+<!--BEGIN YUI YQL autocomplete CODE =============================== -->
 
 <div id="demo">
-  <label for="ac-input">Music artist:</label><br>
+  <label for="ac-input">Food:</label><br>
   <input id="ac-input" type="text">
 </div>
 
@@ -43,7 +43,7 @@ YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasou
     source: 'http://query.yahooapis.com/v1/public/yql?format=json'
   });
 
-  Y.one('#ac-input').plug(Y.Plugin.AutoComplete, {
+  Y.one('#menu_item_food_name').plug(Y.Plugin.AutoComplete, {
     maxResults: 10,
     resultHighlighter: 'wordMatch',
     resultTextLocator: 'name',
@@ -54,14 +54,14 @@ YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasou
     // YQL query to use for each request (URL-encoded, except for the
     // {query} placeholder). This will be appended to the URL that was supplied
     // to the DataSource's "source" config above.
-    requestTemplate: '&q=select * from json where url%3D"http%3A%2F%2Fwdwdata-staging.heroku.com%2Ffoods.json"',
+    requestTemplate: '&q=USE%20%22http%3A%2F%2Fwdwdata-staging.heroku.com%2Fwdwdata.xml%22%20AS%20wdwdata%3B%20select%20*%20from%20wdwdata%20where%20query%3D%22{query}%22',
 
     // Custom result list locator to parse the results out of the YQL response.
     // This is necessary because YQL sometimes returns an array of results, and
     // sometimes just a single result that isn't in an array.
     resultListLocator: function (response) {
       var results = response[0].query.results &&
-            response[0].query.results.json.json;
+            response[0].query.results.food;
 
       if (results && !Y.Lang.isArray(results)) {
         results = [results];
@@ -73,7 +73,7 @@ YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasou
 });
 </script>
 
-<!--END SOURCE CODE FOR EXAMPLE =============================== -->
+<!--END YUI YQL autocomplete CODE =============================== -->
 
 <div class="field">
   <%= f.label :food_name %><br />
