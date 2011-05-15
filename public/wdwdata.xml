@@ -16,7 +16,7 @@
         var out = <wdwdata/>;
         var query = 'select * from xml where url="http://wdwdata-staging.heroku.com/foods.xml"';
         if(food){
-         query+= ' and col0 like "%'+food+'%"';
+         query+= '  and itemPath="foods.food" and name matches  ".*'+food+'.*"';
         }        
         var x = y.query(query);
         var l = x.results..row;
