@@ -5,7 +5,7 @@
     <documentationURL>http://xoap.weather.com</documentationURL>
   </meta>
   <bindings>
-    <select produces="XML">
+    <select produces="XML" itemPath="foods.food">
       <urls>
         <url>http://wdwdata-staging.heroku.com/foods.xml?search={query}</url>
       </urls>
