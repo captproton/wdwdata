@@ -7,7 +7,7 @@
   <bindings>
     <select produces="XML" itemPath="search.loc">
       <urls>
-        <url>http://wdwdata-staging.heroku.com/foods.xml</url>
+        <url>select * from xml where url="http://wdwdata-staging.heroku.com/foods.xml" and itemPath="foods.food" and name matches {query}</url>
       </urls>
       <inputs>
         <key id="query" type="xs:string" paramType="path" required="true"/>
