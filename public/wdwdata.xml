@@ -1,36 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
   <meta>
-    <sampleQuery>select * from {table} where food="funnel cake";</sampleQuery>
-    <author>Carl "CaptProton" Tanner</author>
-    <documentationURL>http://wdwdata.heroku.com/help</documentationURL>  
-    <description>Allows you to access the database of public data about Walt Disney World Parks and filter by all parameters</description>
+    <author>Sam Pullara</author>
+    <documentationURL>http://xoap.weather.com</documentationURL>
   </meta>
-
   <bindings>
-    <select itemPath="" produces="XML">
+    <select produces="XML" itemPath="search.loc">
+      <urls>
+        <url>http://wdwdata-staging.heroku.com/foods.xml</url>
+      </urls>
       <inputs>
-        <key id='food' type='xs:string' paramType='variable' required="true" />
+        <key id="query" type="xs:string" paramType="path" required="true"/>
       </inputs>
-      <execute><![CDATA[
-        var out = <wdwdata/>;
-        var query = 'select * from xml where url="http://wdwdata-staging.heroku.com/foods.xml"';
-        if(food){
-         query+= '  and itemPath="foods.food" and name matches  ".*'+food+'.*"';
-        }        
-        var x = y.query(query);
-        var l = x.results..row;
-        for each(var n in l){
-          n.setName("wdwdata");
-        }
-        var l = x.results..col0;
-        for each(var n in l){
-          n.setName("food");
-        }
-        out.wdwdata = x.results.wdwdata;
-        response.object = out;
-      ]]></execute>
     </select>
-
   </bindings>
 </table>
