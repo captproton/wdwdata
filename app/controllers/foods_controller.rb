@@ -8,7 +8,8 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @foods }
-      format.json  { render :json => @foods.as_json(:only => [:name]) }
+      # format.json  { render :json => @foods.as_json(:only => [:name]) }
+      format.json  { render :json => @foods }
     end
   end
 

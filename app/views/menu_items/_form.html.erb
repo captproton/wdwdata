@@ -40,7 +40,7 @@ body {
 YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasource-get", function (Y) {
   // Create a DataSource instance.
   var ds = new Y.DataSource.Get({
-    source: 'http://localhost:3000/foods.json'
+    source: 'http://query.yahooapis.com/v1/public/yql?format=json'
   });
 
   Y.one('#ac-input').plug(Y.Plugin.AutoComplete, {
@@ -54,14 +54,14 @@ YUI({ filter: 'raw' }).use("autocomplete", "autocomplete-highlighters", "datasou
     // YQL query to use for each request (URL-encoded, except for the
     // {query} placeholder). This will be appended to the URL that was supplied
     // to the DataSource's "source" config above.
-    requestTemplate: '?search={query}%22',
+    requestTemplate: '&q=select * from json where url%3D"http%3A%2F%2Fwdwdata-staging.heroku.com%2Ffoods.json"',
 
     // Custom result list locator to parse the results out of the YQL response.
     // This is necessary because YQL sometimes returns an array of results, and
     // sometimes just a single result that isn't in an array.
     resultListLocator: function (response) {
-      var results = response[0].foods.food &&
-            response[0].foods.food.name;
+      var results = response[0].query.results &&
+            response[0].query.results.json.json;
 
       if (results && !Y.Lang.isArray(results)) {
         results = [results];

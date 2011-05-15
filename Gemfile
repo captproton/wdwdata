@@ -35,7 +35,8 @@ gem "database_cleaner", :group => [:development, :test]
 gem "jquery-rails"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem "nifty-generators", :group => :development
+gem "taps", :group => :development
 gem "httparty", ">= 0.7.6"
-gem "pickle"
-gem "heroku"
+gem "pickle", :group => [:development, :test]
+gem "heroku", :group => :development
 gem "high_voltage"
