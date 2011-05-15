@@ -9,9 +9,7 @@
       <urls>
         <url>select * from xml where url="http://wdwdata-staging.heroku.com/foods.xml"</url>
       </urls>
-      <inputs>
-        <key id="query" type="xs:string" paramType="path" required="true"/>
-      </inputs>
+
     </select>
   </bindings>
 </table>
