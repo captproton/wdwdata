@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.xml
   def index
-    @foods = Food.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    @foods = Food.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"],  :order => "name desc")
     # @categories = Category.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
     
     respond_to do |format|
