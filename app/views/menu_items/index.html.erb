@@ -1,9 +1,11 @@
-<h1>Listing menu_items for <%= @menu.name %></h1>
+<h1>Listing menu_items for <%= @menu.eatery.name %>, <%= @menu.name %></h1>
+<%= link_to 'New Menu item', new_menu_menu_item_path %>
 
 <table>
   <tr>
     <th>Menu</th>
     <th>Food</th>
+	<th>Decription</th>
     <th>Price</th>
     <th></th>
     <th></th>
@@ -11,11 +13,12 @@
   </tr>
 
 <% @menu_items.each do |menu_item| %>
-  <tr>
-    <td><%= menu_item.menu.name %></td>
-    <td><%= menu_item.food_name %></td>
-    <td><%= number_to_currency(menu_item.price) %></td>
-    <td><%# link_to 'Show', menu_menu_item_path %>
+  <tr border='1px'>
+    <td style="border: 1px solid #000000;"><%= menu_item.menu.name %></td>
+    <td  style="border: 1px solid #000000;"><%= menu_item.food_name %></td>
+    <td style="border: 1px solid #000000;"><%= menu_item.food.description %></td>
+    <td style="border: 1px solid #000000;"><%= number_to_currency(menu_item.price) %></td>
+    <td style="border: 1px solid #000000;"><%# link_to 'Show', menu_menu_item_path %>
   <%= link_to "Edit", edit_menu_menu_item_path(menu_item.menu,menu_item) %></td>
 
   </tr>
@@ -24,4 +27,3 @@
 
 <br />
 
-<%= link_to 'New Menu item', new_menu_menu_item_path %>
